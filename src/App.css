@@ -32,3 +32,70 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+/* MyButton */
+.MyButton {
+  cursor: pointer;
+  border-radius: 5px;
+
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  font-size: 18px;
+  white-space: nowrap;
+
+  font-family: 'Gothic A1';
+}
+.MyButton_head {
+  background-color: transparent;
+  color: #000000;
+  
+}
+.MyButton_default {
+  background-color: #D6B4DE;
+  border-color: #450066;
+  color: #450066;
+}
+.MyButton_positive {
+  background-color: #C5DFF6;
+  border-color: #00499E; 
+  color: #00499E;
+}
+.MyButton_negative {
+  background-color: #FFEAEA;
+  border-color: #FF0000; 
+  color: #FF0000;
+}
+
+/* HEADER */
+header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+}
+header > div {
+  display: flex;
+}
+header .head_text {
+  width: 50%;
+  font-size: 25px;
+  justify-content: center;
+}
+header .head_btn_left {
+  width:25%;
+  font-size: 25px;
+  justify-content: start;
+}
+header .head_btn_right {
+  width: 25%;
+  font-size: 25px;
+  justify-content: end;
+}
+header button {
+  font-family: 'Gothic A1';
+}

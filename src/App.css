@@ -54,9 +54,8 @@ body {
   
 }
 .MyButton_default {
-  background-color: #D6B4DE;
-  border-color: #450066;
-  color: #450066;
+  background-color: #ececec;
+  color: #303030;
 }
 .MyButton_positive {
   background-color: #C5DFF6;

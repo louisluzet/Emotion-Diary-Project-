@@ -38,7 +38,7 @@ body {
 .MyButton {
   cursor: pointer;
   border-radius: 5px;
-  border: 1.5px solid;
+  border: none;
 
   padding-top: 7px;
   padding-bottom: 7px;
@@ -58,16 +58,13 @@ body {
 .MyButton_default {
   background-color: #f4f4f4;
   color: #303030;
-  border-color: #303030;
 }
 .MyButton_positive {
   background-color: #C5DFF6;
-  border-color: #00499E; 
   color: #00499E;
 }
 .MyButton_negative {
   background-color: #FFEAEA;
-  border-color: #FF0000; 
   color: #FF0000;
 }
 
@@ -119,12 +116,12 @@ header button {
 }
 .DiaryList .ControlMenu {
   margin-right: 10px;
-  /* border: none; */
+  border: none;
   border-radius: 5px;
   background-color: #f4f4f4;
 
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
   padding-left: 20px;
   padding-right: 20px;
   cursor: pointer;

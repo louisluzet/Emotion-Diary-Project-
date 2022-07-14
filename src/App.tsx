@@ -5,8 +5,9 @@ import Home from "./Pages/Home";
 import New from "./Pages/New";
 import Edit from "./Pages/Edit";
 import Diary from "./Pages/Diary";
-type contentProp = {
-  date: any;
+export type contentProp = {
+  id: number,
+  date: number;
   content: string;
   emotion: number;
 };
@@ -37,8 +38,8 @@ const reducer = (state: any, action: any) => {
   return newState;
 };
 
-export const DiaryStateContext = React.createContext<[] | null>([]);
-export const DiaryDispatchContext = React.createContext<{} | null>({});
+export const DiaryStateContext = React.createContext<[]>([]);
+export const DiaryDispatchContext = React.createContext<{}>({});
 
 const dummyData = [
   {
@@ -64,6 +65,12 @@ const dummyData = [
     emotion: 4,
     content: '오늘의 일기 4번',
     date: 1657687767125
+  },
+  {
+    id: 5,
+    emotion: 5,
+    content: '오늘의 일기 5번',
+    date: 1657778919432
   }
 ]
 

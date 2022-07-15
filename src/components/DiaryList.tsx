@@ -90,7 +90,7 @@ const DiaryList = ({ diaryList }: any) => {
         (it: { id: number; content: string; emotion: number }) => (
           <div key={it.id}>
             {/* {it.content} 감정 점수: {it.emotion} */}
-            <DiaryItem date={0} key={it.id} {...it} />
+            <DiaryItem key={it.id} {...it} />
           </div>
         )
       )}

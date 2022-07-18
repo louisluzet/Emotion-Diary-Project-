@@ -11,33 +11,6 @@ export type contentProp = {
   content: string;
   emotion: number;
 };
-
-const reducer = (state: any, action: any) => {
-  let newState: any[] = [];
-  switch (action.type) {
-    case "INIT": {
-      return action.data;
-    }
-    case "CREATE": {
-      newState = [action.data, ...state];
-      break;
-    }
-    case "REMOVE": {
-      newState = state.filter((it: any) => it.id !== action.targetId);
-      break;
-    }
-    case "Edit": {
-      newState = state.map((it: { id: any }) => {
-        return it.id === action.data.id ? { ...action.data } : it;
-      });
-      break;
-    }
-    default:
-      return state;
-  }
-  return newState;
-};
-
 export const DiaryStateContext = React.createContext<[]>([]);
 export const DiaryDispatchContext = React.createContext<{}>({});
 
@@ -73,11 +46,36 @@ const dummyData = [
     date: 1657778919432
   }
 ]
+const reducer = (state: any, action: any) => {
+  let newState: any[] = [];
+  switch (action.type) {
+    case "INIT": {
+      return action.data;
+    }
+    case "CREATE": {
+      newState = [action.data, ...state];
+      break;
+    }
+    case "REMOVE": {
+      newState = state.filter((it: any) => it.id !== action.targetId);
+      break;
+    }
+    case "Edit": {
+      newState = state.map((it: { id: any }) => {
+        return it.id === action.data.id ? { ...action.data } : it;
+      });
+      break;
+    }
+    default:
+      return state;
+  }
+  return newState;
+};
 
 function App() {
   const [data, dispatch] = useReducer(reducer, dummyData);
 
-  const dataId = useRef(0);
+  const dataId = useRef(6);
   // CREATE
   const onCreate = ({ date, content, emotion }: contentProp) => {
     dispatch({
@@ -123,7 +121,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/new" element={<New />} />
-              <Route path="/edit" element={<Edit />} />
+              <Route path="/edit/:id" element={<Edit />} />
               <Route path="/diary/:id" element={<Diary />} />
             </Routes>
           </div>

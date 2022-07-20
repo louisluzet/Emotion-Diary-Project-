@@ -8,16 +8,16 @@ import { getStringDate } from "../util/date";
 import { emotionList } from "../util/emotion";
 
 const env = process.env;
-env.PUBLIC_URL = env.PUBLIC_URL || '';
+env.PUBLIC_URL = env.PUBLIC_URL || "";
 
-const DiaryEditor = ({isEdit, originData}: any) => {
+const DiaryEditor = ({ isEdit, originData }: any) => {
   const navigate = useNavigate();
   const contentRef: any = useRef();
   const [date, setDate] = useState(getStringDate(new Date()));
   const [emotion, setEmotion] = useState(3);
   const [content, setContent] = useState("");
 
-  const { onCreate, onEdit }: any = useContext(DiaryDispatchContext);
+  const { onCreate, onEdit, onRemove }: any = useContext(DiaryDispatchContext);
 
   const handleClickEmotion = (emotion: any) => {
     setEmotion(emotion);
@@ -29,15 +29,27 @@ const DiaryEditor = ({isEdit, originData}: any) => {
       return;
     }
 
-    if (window.confirm(isEdit? "일기를 수정하시겠습니까?": "새로운 일기를 작성하시겠습니까?")) {
+    if (
+      window.confirm(
+        isEdit ? "일기를 수정하시겠습니까?" : "새로운 일기를 작성하시겠습니까?"
+      )
+    ) {
       if (!isEdit) {
-        onCreate({date, content, emotion});
-      } else {
-        onEdit(originData.id, date, content, emotion);
+        onCreate({ date, content, emotion });
+      }
+      if (isEdit) {
+        onEdit(originData.id, {date, content, emotion});
       }
     }
     navigate("/", { replace: true });
   };
+
+  const handleRemove = () => {
+    if(window.confirm('정말 삭제하시겠습니까?')) {
+      onRemove(originData.id);
+      navigate('/', {replace: true});
+    }
+  }
 
   useEffect(() => {
     if (isEdit) {
@@ -58,7 +70,15 @@ const DiaryEditor = ({isEdit, originData}: any) => {
             onClick={() => navigate(-1)}
           />
         }
-        rightChild={() => {}}
+        rightChild={
+          isEdit && (
+            <MyButton
+            type={"negative"}
+            text={"삭제하기"}
+            onClick={handleRemove}
+          />
+          )
+        }
       />
       <div>
         <section>

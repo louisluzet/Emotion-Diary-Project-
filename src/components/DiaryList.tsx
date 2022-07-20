@@ -32,7 +32,7 @@ const ControlMenu = ({ value, onChange, optionList }: any) => {
 
 const DiaryList = ({ diaryList }: any) => {
   const navigate = useNavigate();
-  const [sortType, setSortType] = useState("lastest");
+  const [sortType, setSortType] = useState("latest");
   const [filter, setFilter] = useState("all");
 
   /* 정렬 함수 */
